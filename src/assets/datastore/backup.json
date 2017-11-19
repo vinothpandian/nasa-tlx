@@ -1,0 +1,125 @@
+{
+  "experiments": [
+    {
+      "experimentID": "E1",
+      "participantID": "P1",
+      "scale": {
+        "Effort": "50",
+        "Frustration": "50",
+        "Mental Demand": "50",
+        "Performance": "50",
+        "Physical Demand": "50",
+        "Temporal Demand": "50"
+      },
+      "workload": {
+        "Effort": "0.8",
+        "Frustration": "0.8",
+        "Mental Demand": "0.8",
+        "Performance": "0.8",
+        "Physical Demand": "0.8",
+        "Temporal Demand": "0.8"
+      }
+    },
+    {
+      "experimentID": "E1",
+      "participantID": "P2",
+      "scale": {
+        "Effort": "50",
+        "Frustration": "50",
+        "Mental Demand": "50",
+        "Performance": "50",
+        "Physical Demand": "50",
+        "Temporal Demand": "50"
+      },
+      "workload": {
+        "Effort": "0.8",
+        "Frustration": "0.8",
+        "Mental Demand": "0.8",
+        "Performance": "0.8",
+        "Physical Demand": "0.8",
+        "Temporal Demand": "0.8"
+      }
+    },
+    {
+      "experimentID": "E2",
+      "participantID": "P1",
+      "scale": {
+        "Effort": "50",
+        "Frustration": "50",
+        "Mental Demand": "50",
+        "Performance": "50",
+        "Physical Demand": "50",
+        "Temporal Demand": "50"
+      },
+      "workload": {
+        "Effort": "0.8",
+        "Frustration": "0.8",
+        "Mental Demand": "0.8",
+        "Performance": "0.8",
+        "Physical Demand": "0.8",
+        "Temporal Demand": "0.8"
+      }
+    },
+    {
+      "experimentID": "E1",
+      "participantID": "P3",
+      "scale": {
+        "Effort": "70",
+        "Frustration": "70",
+        "Mental Demand": "70",
+        "Performance": "70",
+        "Physical Demand": "70",
+        "Temporal Demand": "70"
+      },
+      "workload": {
+        "Effort": "0.2",
+        "Frustration": "0.2",
+        "Mental Demand": "0.2",
+        "Performance": "0.2",
+        "Physical Demand": "0.2",
+        "Temporal Demand": "0.2"
+      }
+    },
+    {
+      "experimentID": "E1",
+      "participantID": "P4",
+      "scale": {
+        "Effort": "70",
+        "Frustration": "70",
+        "Mental Demand": "70",
+        "Performance": "70",
+        "Physical Demand": "70",
+        "Temporal Demand": "70"
+      },
+      "workload": {
+        "Effort": "0.2",
+        "Frustration": "0.2",
+        "Mental Demand": "0.2",
+        "Performance": "0.2",
+        "Physical Demand": "0.2",
+        "Temporal Demand": "0.2"
+      }
+    },
+    {
+      "id": 1511107356258,
+      "experimentID": "E1",
+      "participantID": "P5",
+      "scale": {
+        "Mental Demand": 85,
+        "Physical Demand": 5,
+        "Temporal Demand": 40,
+        "Effort": 65,
+        "Frustration": 80,
+        "Performance": 60
+      },
+      "workload": {
+        "Mental Demand": 5,
+        "Physical Demand": 4,
+        "Temporal Demand": 3,
+        "Performance": 2,
+        "Effort": 1,
+        "Frustration Level": 0
+      }
+    }
+  ]
+}

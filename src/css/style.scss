@@ -1,0 +1,46 @@
+@import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  padding-top: 86px;
+}
+
+.steps{
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.tick {
+  border: 1px solid transparent; /*follows slide handle style for sizing purposes*/
+  position: absolute;
+  width: 1.2em;
+  margin-left: -.6em;
+  text-align:center;
+  font-size: 0.92rem;
+  left: 0;
+}
+
+.ui-slider .ui-slider-handle {
+  background-color: $primary;
+  border: none;
+}
+
+
+.sliderContainer {
+  width: 90%;
+}
+
+.expSelectBtn{
+  width: 10rem;
+}
+
+.questionCard{
+  width: 40rem;
+}
+
+.questionCardContainer{
+  height: 70%;
+}
+
+#expForm{
+  width: 30rem;
+}
