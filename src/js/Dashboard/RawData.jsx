@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Bar, BarChart, CartesianGrid, LabelList, Legend, Tooltip, XAxis, YAxis} from "recharts";
+import {Bar, BarChart, CartesianGrid, Label, LabelList, Legend, Tooltip, XAxis, YAxis} from "recharts";
 
 const axios = require("axios")
 const moment = require("moment")
@@ -38,29 +38,31 @@ class RawData extends Component {
         let weightedWorkloadTableHead = [];
         let weightedWorkloadTableRow = [];
         let taskLoad = 0;
-        let data = []
+        let data = [];
+        let alertMessage = "";
 
-        if ("scale" in this.state.rawdata) {
+        if ("scale" in this.state.rawdata && "workload" in this.state.rawdata) {
             Object.keys(this.state.rawdata.scale).map((key, i) => {
 
                 let scale = this.state.rawdata.scale[key];
                 let workload = this.state.rawdata.workload[key];
-                let weightedWorkload = parseFloat((scale * (workload/15).toFixed(2)).toFixed(2));
-                taskLoad += weightedWorkload;
+                let weightedWorkload = parseFloat(scale * workload);
+                taskLoad += weightedWorkload/15;
 
-                scaleTableHead.push(<th key={"scaleTableHead" + i} scope="col">{key}</th>)
-                scaleTableRow.push(<td key={"scaleTableRow" + i}>{scale}</td>)
-                workloadTableHead.push(<th key={"workloadTableHead" + i} scope="col">{key}</th>)
-                workloadTableRow.push(<td key={"workloadTableRow" + i}>{workload}</td>)
-                weightedWorkloadTableHead.push(<th key={"weightedWorkloadTableHead" + i} scope="col">{key}</th>)
-                weightedWorkloadTableRow.push(<td key={"weightedWorkloadTableRow" + i}>{weightedWorkload}</td>)
+                scaleTableHead.push(<th key={"scaleTableHead" + i} scope="col">{key}</th>);
+                scaleTableRow.push(<td key={"scaleTableRow" + i}>{scale}</td>);
+                workloadTableHead.push(<th key={"workloadTableHead" + i} scope="col">{key}</th>);
+                workloadTableRow.push(<td key={"workloadTableRow" + i}>{workload}</td>);
+                weightedWorkloadTableHead.push(<th key={"weightedWorkloadTableHead" + i} scope="col">{key}</th>);
+                weightedWorkloadTableRow.push(<td key={"weightedWorkloadTableRow" + i}>{weightedWorkload}</td>);
 
                 data.push({
                     name: key,
-                    score: weightedWorkload
+                    score: parseFloat((weightedWorkload/15).toFixed(2))
                 })
             });
-
+        } else {
+            alertMessage = <div className="alert alert-warning"><span className="font-weight-bold">DATA INCOMPLETE.</span> PLEASE CHECK THE JSON FILE FOR INFORMATION</div>
         }
 
         return (
@@ -76,6 +78,7 @@ class RawData extends Component {
                         <hr/>
                     </div>
                     <div className="col-12 mt-4">
+                        {alertMessage}
                         <h2 className="font-weight-bold alert alert-success">{`Weighted rating : ${taskLoad.toFixed(2)}`}</h2>
                     </div>
                     <div className="col-12 mt-4 p-5 card">
@@ -138,24 +141,26 @@ class RawData extends Component {
                         <div className="row card-body justify-content-center align-items-center w-100 mt-5">
 
                             <div className="col-auto">
-                                <BarChart width={800} height={400} data={data}>
+                                <BarChart width={900} height={450} data={data}>
                                     <CartesianGrid strokeDasharray="3 3" />
-                                    <XAxis dataKey="name" />
-                                    <YAxis domain={[0, 'dataMax + 10']} />
+                                    <XAxis dataKey="name" >
+                                        <Label value="Importance Weight" offset={5} position="bottom" />
+                                    </XAxis>
+                                    <YAxis label={{ value: 'Rating', angle: -90, position: 'insideLeft' }} domain={[0, 'dataMax + 10']} />
                                     <Tooltip />
-                                    <Legend />
+                                    <Legend align="right" verticalAlign="bottom" height={36}/>
                                     <Bar dataKey="score" fill="#82ca9d" >
                                     </Bar>
                                 </BarChart>
                             </div>
                             <div className="col-auto">
-                                <BarChart width={200} height={400} data={[{tag: "Weighted Rating", Overall: parseFloat(taskLoad.toFixed(2))}]}>
+                                <BarChart width={200} height={400} data={[{tag: "Weighted Rating", "Overall Workload": parseFloat(taskLoad.toFixed(2))}]}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="tag" />
                                     <YAxis />
                                     <Tooltip />
                                     <Legend />
-                                    <Bar dataKey="Overall" fill="#8884d8" >
+                                    <Bar dataKey="Overall Workload" fill="#8884d8" >
                                     </Bar>
                                 </BarChart>
                             </div>

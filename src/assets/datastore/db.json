@@ -146,6 +146,61 @@
         "Effort": 1,
         "Frustration Level": 0
       }
+    },
+    {
+      "id": 1511172221270,
+      "experimentID": "E1",
+      "participantID": "HkNtOQlxG",
+      "scale": {
+        "Mental Demand": 50,
+        "Physical Demand": 80,
+        "Temporal Demand": 50,
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Performance": 50
+      }
+    },
+    {
+      "id": 1511172295478,
+      "experimentID": "E1",
+      "participantID": "BkFa_7eeG",
+      "scale": {
+        "Mental Demand": 50,
+        "Physical Demand": 50,
+        "Temporal Demand": 50,
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Performance": 80
+      },
+      "workload": {
+        "Mental Demand": 4,
+        "Physical Demand": 2,
+        "Temporal Demand": 3,
+        "Performance": 2,
+        "Effort": 3,
+        "Frustration Level": 1
+      }
+    },
+    {
+      "id": 1511174775917,
+      "experimentID": "E1",
+      "participantID": "r12IzNegM",
+      "scale": {
+        "Mental Demand": 85,
+        "Physical Demand": 70,
+        "Temporal Demand": 65,
+        "Effort": 50,
+        "Frustration Level": 50,
+        "Performance": 50
+      },
+      "workload": {
+        "Mental Demand": 4,
+        "Physical Demand": 3,
+        "Temporal Demand": 4,
+        "Performance": 2,
+        "Effort": 2,
+        "Frustration Level": 0
+      }
     }
   ]
 }

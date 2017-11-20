@@ -20,24 +20,31 @@ class DashboardTable extends Component {
 
     }
 
-    computeTaskLoadScore(participantData) {
-
-        let taskLoad = Object.keys(participantData.scale).reduce((taskload, data) => {
-            return taskload + (parseFloat(participantData.scale[data]) * parseFloat((parseFloat(participantData.workload[data]) / 15).toFixed(2)))
-        }, 0);
-
-        return taskLoad.toFixed(2)
-    }
 
     updateData() {
 
+        function computeTaskLoadScore(participantData) {
+
+            let taskLoad = Object.keys(participantData.scale).reduce((taskload, data) => {
+                return taskload + (parseFloat(participantData.scale[data]) * parseFloat((parseFloat(participantData.workload[data]) / 15).toFixed(2)))
+            }, 0);
+
+            return taskLoad.toFixed(2)
+        }
+
         axios.get("http://localhost:3000/experiment/" + this.props.expID)
             .then((res) => {
-                this.chartData = []
-                let tableData = []
+                this.chartData = [];
+                let tableData = [];
                 res.data.forEach((row, i) => {
 
-                    let taskLoadScore = this.computeTaskLoadScore(row)
+                    let taskLoadScore = "";
+
+                    if("scale" in row && "workload" in row) {
+                        taskLoadScore = computeTaskLoadScore(row);
+                    } else {
+                        taskLoadScore = <span className="text-danger font-weight-bold">Data Incomplete</span>
+                    }
 
                     tableData.push(
                         <tr key={"infoRow" + i}>
@@ -49,14 +56,14 @@ class DashboardTable extends Component {
                                          className="btn btn-sm btn-info">View Raw Data</NavLink>
                             </td>
                         </tr>
-                    )
+                    );
 
                     this.chartData.push({
                         name: row.participantID,
                         Taskload: parseFloat(taskLoadScore)
                     })
 
-                })
+                });
 
                 this.setState({
                     tableData: tableData
@@ -118,10 +125,10 @@ class DashboardTable extends Component {
                         <div className="col-auto">
                             <BarChart width={730} height={250} data={this.chartData}>
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis domain={[0, 100]} />
+                                <XAxis label={{ value: 'Participants', position: 'bottom' }} dataKey="name" />
+                                <YAxis label={{ value: 'Taskload', angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
                                 <Tooltip />
-                                <Legend />
+                                <Legend align="right" verticalAlign="bottom" height={36} />
                                 <Bar dataKey="Taskload" fill="#8884d8" />
                             </BarChart>
                         </div>

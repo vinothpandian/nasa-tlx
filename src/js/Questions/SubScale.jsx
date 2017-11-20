@@ -31,7 +31,10 @@ class SubScale extends Component {
 
             axios.put(`http://localhost:3000/participant/scale/${this.expID}/${this.partID}`, data)
                 .then(()=>{
-                    this.props.history.push("/part2");
+
+                    $("#subScaleContainer").fadeOut(1000, ()=>{
+                        this.props.history.push("/part2");
+                    })
                 })
                 .catch((e)=>{
                     alert("Please start experiment from Home screen. No such experiment or participant.");
@@ -60,7 +63,7 @@ class SubScale extends Component {
 
     render() {
         return (
-            <div className="container p-5">
+            <div id={"subScaleContainer"} className="container p-5">
                 <div className="card my-5">
                     <h3 className="card-header">Workload</h3>
                     <div className="card-body">

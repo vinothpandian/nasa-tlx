@@ -34,20 +34,22 @@ class Pairwise extends Component {
 
         let selection = $("#"+event.target.id).val();
 
-        this.setState((prevState, props) => {
+        $("#questionCard").fadeOut(250, ()=>{
+            this.setState((prevState, props) => {
 
-            if(prevState.questionCombo.length === 1) {
-              return {
-                  choice : [...prevState.choice, selection],
-                  completed: true
-              }
-            }
+                if(prevState.questionCombo.length === 1) {
+                    return {
+                        choice : [...prevState.choice, selection],
+                        completed: true
+                    }
+                }
 
-            return {
-                questionCombo : [...prevState.questionCombo.splice(1)],
-                choice : [...prevState.choice, selection]
-            };
+                return {
+                    questionCombo : [...prevState.questionCombo.splice(1)],
+                    choice : [...prevState.choice, selection]
+                };
 
+            })
         });
 
     }
@@ -61,10 +63,14 @@ class Pairwise extends Component {
         }
 
         $("#cardHeader").html(`Question ${this.state.choice.length +1} of 15`)
+
+        $("#questionCard").fadeIn("slow");
     }
 
     componentDidUpdate(prevProps, prevState, prevContext) {
         $("#cardHeader").html(`Question ${this.state.choice.length +1} of 15`)
+
+        $("#questionCard").fadeIn(250);
 
         if(this.state.completed){
 
@@ -105,8 +111,9 @@ class Pairwise extends Component {
         if(!this.state.completed){
             return (
                 <div className="container">
-                    <div className="row questionCardContainer justify-content-center align-items-center">
-                        <div className="card questionCard text-center rounded">
+                    <div  className="row questionCardContainer justify-content-center align-items-center">
+
+                        <div id="questionCard"  className="card questionCard text-center rounded">
                             <div id="cardHeader" className="card-header">
                             </div>
                             <div className="p-5">
@@ -127,6 +134,7 @@ class Pairwise extends Component {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div className="row">
 
