@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import DashboardTable from "./DashboardTable";
-import {NavLink} from "react-router-dom";
-const axios = require("axios")
+
+const axios = require("axios");
 
 class Dashboard extends Component {
 
@@ -12,7 +11,7 @@ class Dashboard extends Component {
         this.state = {
             experiments: [],
             expID: ""
-        }
+        };
 
         this.handleClick = this.handleClick.bind(this)
     }
@@ -38,7 +37,7 @@ class Dashboard extends Component {
     render() {
 
         let experiments = this.state.experiments.map((val, i)=>{
-            return <button key={i} id={val} className="dropdown-item" onClick={this.handleClick} to={`/dashboard/${val}`}>{val}</button>
+            return <button key={i} id={val} className="dropdown-item" onClick={this.handleClick}>{val}</button>
         });
 
         return (
@@ -54,7 +53,9 @@ class Dashboard extends Component {
                             </div>
                             <div className="col-auto">
                                 <div className="btn-group">
-                                    <button type="button"  className="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button type="button" id={"dashboardDropdown"}
+                                            className="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
                                         {this.state.expID}
                                     </button>
                                     <div className="dropdown-menu">

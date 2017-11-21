@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import OptionDefinition from "./OptionDefinition";
-import QuestionCard from "./QuestionCard";
 import definitionAPI from "../../assets/datastore/definitions.json"
 
 const axios = require("axios")
@@ -136,7 +134,7 @@ class Pairwise extends Component {
                         </div>
 
                     </div>
-                    <div className="row">
+                    <div className="row justify-content-around align-items-stretch">
 
                         <OptionDefinition optionTitle={title1}
                                           optionDefinition={definitionAPI[title1]}/>
@@ -150,7 +148,7 @@ class Pairwise extends Component {
             return (
                 <div className="row justify-content-center align-items-center h-100">
                     <div className="col-auto">
-                        <h1 className="display-1">
+                        <h1 className="display-3">
                             Thank you for your submission
                         </h1>
                         <div id="alertBox" className="alert text-center mt-4" role="alert">

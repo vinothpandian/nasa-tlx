@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 class OptionDefinition extends Component {
     render() {
+
+        const borderStyle = {
+            border: "rgba(0, 0, 0, 0.125) 1px solid"
+        };
+
         return (
-            <div className="col-6 border-light p-1">
-                <div className="card p-3">
-                    <h4 className="card-title">{this.props.optionTitle}</h4>
+            <div className="col-5 border rounded" style={borderStyle}>
+                <div className="card border-0 p-3">
+                    <h4 className="card-title">{this.props.optionTitle} <i
+                        className="float-right text-info material-icons">info_outline</i></h4>
                     <div className="card-body">
                         <p>
                             {this.props.optionDefinition}

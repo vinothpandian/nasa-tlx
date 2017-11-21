@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom'
 import definitionAPI from "../../assets/datastore/definitions.json"
 
 const nasaLogo = require("../../assets/NasaLogo.png");
@@ -37,8 +36,10 @@ class Nav extends Component {
                         Nasa TLX
                     </a>
                     <form className="form-inline">
-                        <button className="btn btn-info mt-3 mr-3" onClick={this.handleDefClick}>Definitions</button>
-                        <button className="btn btn-success mt-3" onClick={this.handleInsClick}>Instructions</button>
+                        <button className="btn btn-info mt-3 mr-3" onClick={this.handleDefClick}>Definitions <i
+                            className="navbar-material-icon material-icons">help_outline</i></button>
+                        <button className="btn btn-success mt-3" onClick={this.handleInsClick}>Instructions <i
+                            className="navbar-material-icon material-icons">info_outline</i></button>
                     </form>
                 </nav>
 

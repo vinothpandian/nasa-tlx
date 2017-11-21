@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Bar, BarChart, CartesianGrid, Label, LabelList, Legend, Tooltip, XAxis, YAxis} from "recharts";
+import {Bar, BarChart, CartesianGrid, Label, Legend, Tooltip, XAxis, YAxis} from "recharts";
 
-const axios = require("axios")
-const moment = require("moment")
+const axios = require("axios");
+const moment = require("moment");
 
 class RawData extends Component {
 
@@ -62,11 +61,11 @@ class RawData extends Component {
                 })
             });
         } else {
-            alertMessage = <div className="alert alert-warning"><span className="font-weight-bold">DATA INCOMPLETE.</span> PLEASE CHECK THE JSON FILE FOR INFORMATION</div>
+            alertMessage = <div className="alert alert-warning"><span className="font-weight-bold">DATA INCOMPLETE.</span> <span>PLEASE CHECK THE JSON FILE FOR INFORMATION</span></div>
         }
 
         return (
-            <div className="container-fluid">
+            <div id="rawDataPage" className="container-fluid">
                 <div className="row p-5">
                     <div className="col-12">
                         <h1>{`Raw data of Participant "${this.props.match.params.partID}" in Experiment "${this.props.match.params.expID}"`}</h1>

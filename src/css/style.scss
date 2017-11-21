@@ -44,3 +44,22 @@ body {
 #expForm{
   width: 30rem;
 }
+
+.material-icons {
+  vertical-align: inherit;
+  font-size: inherit;
+}
+
+#dashboardDropdown {
+  width: 10rem;
+}
+
+#scaleTable, #workloadTable, #weightedWorkloadTable {
+  thead {
+    tr {
+      th {
+        width: 16.67%;
+      }
+    }
+  }
+}

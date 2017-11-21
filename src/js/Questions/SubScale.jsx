@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SubScaleQuestion from "./SubScaleQuestion";
-const axios = require("axios")
+
+const axios = require("axios");
 
 class SubScale extends Component {
 
@@ -37,7 +38,7 @@ class SubScale extends Component {
                     })
                 })
                 .catch((e)=>{
-                    alert("Please start experiment from Home screen. No such experiment or participant.");
+                    alert("Please start experiment from Home screen. No such experiment or participant. "+e);
                     this.props.history.push("/");
                     sessionStorage.clear();
                 });
@@ -54,7 +55,7 @@ class SubScale extends Component {
         }
 
         $('[id^=slider]').slider({
-            change: (event)=>{
+            change: ()=>{
                 this.modified = true;
             }
         })
@@ -88,7 +89,8 @@ class SubScale extends Component {
                 </div>
 
                 <div className="container mt-5 text-right">
-                    <button className="btn btn-lg btn-success" onClick={this.handleClick}>Continue</button>
+                    <button className="btn btn-lg btn-success" onClick={this.handleClick}>Continue <i
+                        className="material-icons">navigate_next</i></button>
                 </div>
 
                 <div id="alertBox" className="alert mt-4" role="alert">
