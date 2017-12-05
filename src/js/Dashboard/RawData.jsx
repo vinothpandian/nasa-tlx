@@ -80,6 +80,30 @@ class RawData extends Component {
                         {alertMessage}
                         <h2 className="font-weight-bold alert alert-success">{`Weighted rating : ${taskLoad.toFixed(2)}`}</h2>
                     </div>
+                    <div className="col-12 mt-4 p-2 card">
+                        <div className="px-5 py-3 card-body">
+                            <table className="table table-responsive">
+                                <thead>
+                                <th scope="row">Details</th>
+                                <th></th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th scope="col" className="pr-5" >Age</th>
+                                    <td>{this.state.rawdata.age}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col" className="pr-5">Gender</th>
+                                    <td>{this.state.rawdata.gender}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col" className="pr-5">Experience</th>
+                                    <td>{this.state.rawdata.experience}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                     <div className="col-12 mt-4 p-5 card">
                         <h3 className="card-title">Raw ratings</h3>
                         <div className="px-5 py-3 card-body">

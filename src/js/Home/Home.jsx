@@ -17,7 +17,7 @@ class Home extends Component {
         let partID = $("#participantID").val();
         let expID = $("#experimentID").val();
 
-        if (!partID || partID == "", !expID || expID == "") {
+        if (!partID || partID == "" && !expID || expID == "") {
             $("#alertBox").addClass("alert-danger").html("Please fill Experiment ID and Participant ID to start")
         } else {
             axios.post(`http://localhost:3000/participant/add/${expID}/${partID}`)
@@ -25,7 +25,7 @@ class Home extends Component {
                     sessionStorage.clear();
                     sessionStorage.setItem("expID", expID);
                     sessionStorage.setItem("partID", partID);
-                    this.props.history.push("/part1");
+                    this.props.history.push("/details");
                 }).catch((err) => {
                 $("#alertBox").addClass("alert-danger").html(`Participant data of ${partID} already exist`)
             })
@@ -36,7 +36,7 @@ class Home extends Component {
     generateRandom(event){
         event.preventDefault();
 
-        let id = event.target.id.split("random-")
+        let id = event.target.id.split("random-");
 
         $(`#${id[1]}`).val(shortid.generate())
     }

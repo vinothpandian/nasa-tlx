@@ -8,12 +8,13 @@
     "build": "NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "wdev": "SET NODE_ENV=development & webpack-dev-server -d --hot --config ./config/webpack.dev.js",
     "wbuild": "SET NODE_ENV=production & webpack --config ./config/webpack.prod.js",
-    "start": "nodemon -e js,json server.js",
+    "devStart": "nodemon -e js,json server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vinothpandian/react-webpack-boilerplate.git"
+    "url": "git+https://github.com/vinothpandian/nasa-tlx.git"
   },
   "keywords": [
     "nasatlx",
@@ -23,9 +24,9 @@
   "author": "Vinoth Pandian",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vinothpandian/react-webpack-boilerplate/issues"
+    "url": "https://github.com/vinothpandian/nasa-tlx/issues"
   },
-  "homepage": "https://github.com/vinothpandian/react-webpack-boilerplate#readme",
+  "homepage": "https://github.com/vinothpandian/nasa-tlx#readme",
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",

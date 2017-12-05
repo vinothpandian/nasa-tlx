@@ -68,23 +68,19 @@ class SubScale extends Component {
                 <div className="card my-5">
                     <h3 className="card-header">Workload</h3>
                     <div className="card-body">
-                        <SubScaleQuestion id="slider1" title="Mental Demand"  description="How mentally demanding was the task?" />
-                        <hr/>
-                        <SubScaleQuestion id="slider2" title="Physical Demand"  description="How physically demanding was the task?" />
-                        <hr/>
-                        <SubScaleQuestion id="slider3" title="Temporal Demand"  description="How hurried or rushed was the pace of the task?" />
-                        <hr/>
-                        <SubScaleQuestion id="slider4" title="Effort"  description="How hard did you have to work to accomplish your level of performance?" />
-                        <hr/>
-                        <SubScaleQuestion id="slider5" title="Frustration Level"  description="How insecure, discouraged, irritated, stressed, or annoyed were you?" />
-                    </div>
-
-                </div>
-                <div className="card">
-                    <div className="card-body">
                         <p className="text-info">Please note that the following scale is a measure of how well you think you did on the task.</p>
                         <hr/>
-                        <SubScaleQuestion id="slider6" title="Performance"  description="How successful were you in accomplishing the task?" />
+                        <SubScaleQuestion id="slider1" title="Mental Demand"  description="How mentally demanding was the task?" leftValue={"Low"} rightValue={"High"}/>
+                        <hr/>
+                        <SubScaleQuestion id="slider2" title="Physical Demand"  description="How physically demanding was the task?" leftValue={"Low"} rightValue={"High"}/>
+                        <hr/>
+                        <SubScaleQuestion id="slider3" title="Temporal Demand"  description="How hurried or rushed was the pace of the task?" leftValue={"Low"} rightValue={"High"}/>
+                        <hr/>
+                        <SubScaleQuestion id="slider4" title="Performance"  description="How successful were you in accomplishing the task?" leftValue={"Poor"} rightValue={"Good"} />
+                        <hr/>
+                        <SubScaleQuestion id="slider5" title="Effort"  description="How hard did you have to work to accomplish your level of performance?" leftValue={"Low"} rightValue={"High"}/>
+                        <hr/>
+                        <SubScaleQuestion id="slider6" title="Frustration Level"  description="How insecure, discouraged, irritated, stressed, or annoyed were you?" leftValue={"Low"} rightValue={"High"}/>
                     </div>
                 </div>
 

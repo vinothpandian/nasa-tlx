@@ -26,7 +26,7 @@ class DashboardTable extends Component {
         function computeTaskLoadScore(participantData) {
 
             let taskLoad = Object.keys(participantData.scale).reduce((taskload, data) => {
-                return taskload + (parseFloat(participantData.scale[data]) * parseFloat((parseFloat(participantData.workload[data]) / 15).toFixed(2)))
+                return taskload + parseFloat(participantData.scale[data] * participantData.workload[data])/15
             }, 0);
 
             return taskLoad.toFixed(2)
@@ -85,7 +85,7 @@ class DashboardTable extends Component {
     componentDidMount() {
         this.setState({
             expID: this.props.expID
-        })
+        });
         this.updateData()
 
     }

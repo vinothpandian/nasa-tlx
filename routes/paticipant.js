@@ -51,6 +51,38 @@ router.post("/participant/add/:expID/:partID",(req,res)=>{
 })
 
 
+router.put("/participant/details/:expID/:partID", (req, res) => {
+    db.then((db) => {
+
+        const data = db.get("experiments").filter({
+            experimentID: req.params.expID,
+            participantID: req.params.partID
+        }).first().value();
+
+        if(data === undefined) {
+            res.status(404).json("No such experiment or participant")
+        } else {
+            const exp = db.get("experiments").find({
+                experimentID: req.params.expID,
+                participantID: req.params.partID
+            }).assign({
+                age: req.body.ageGroup,
+                gender: req.body.genderGroup,
+                experience: req.body.experienceGroup
+            }).write().then((data) => {
+                res.json("written");
+            }).catch((e)=>{
+                res.json(e)
+            });
+        }
+
+    }).catch((e) => {
+        res.status(500).json("Database missing!!!");
+    });
+
+});
+
+
 router.put("/participant/scale/:expID/:partID", (req, res) => {
     db.then((db) => {
 

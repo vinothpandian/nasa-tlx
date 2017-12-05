@@ -68,7 +68,7 @@ class Pairwise extends Component {
     componentDidUpdate(prevProps, prevState, prevContext) {
         $("#cardHeader").html(`Question ${this.state.choice.length +1} of 15`)
 
-        $("#questionCard").fadeIn(250);
+        $("#questionCard").fadeIn(1);
 
         if(this.state.completed){
 

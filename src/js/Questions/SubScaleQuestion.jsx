@@ -25,10 +25,10 @@ class SubScaleQuestion extends Component {
         let boxes = _.range(0, 21).map((num) => {
             let boxStyle = {
                 left: num * 5 + "%"
-            }
+            };
 
             return <span key={"box" + num} className="tick text-muted" style={boxStyle}>|</span>
-        })
+        });
 
         return (
             <div className="row mt-4 align-items-center justify-content-center">
@@ -43,9 +43,9 @@ class SubScaleQuestion extends Component {
                         </div>
                         <div id={this.props.id} data-name={this.props.title} ></div>
                         <div className="row mt-2">
-                            <div className="col-4 text-left">Low</div>
+                            <div className="col-4 text-left">{this.props.leftValue}</div>
                             <div className="col-4 text-center">Neutral</div>
-                            <div className="col-4 text-right">High</div>
+                            <div className="col-4 text-right">{this.props.rightValue}</div>
                         </div>
                     </div>
                 </div>
