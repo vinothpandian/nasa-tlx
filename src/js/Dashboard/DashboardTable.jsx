@@ -50,6 +50,9 @@ class DashboardTable extends Component {
                         <tr key={"infoRow" + i}>
                             <th id={row.participantID} scope="row">{row.participantID}</th>
                             <td id={"taskLoad-" + row.participantID}>{taskLoadScore}</td>
+                            <td id={"age-" + row.participantID}>{row.age}</td>
+                            <td id={"gender-" + row.participantID}>{row.gender}</td>
+                            <td id={"experience-" + row.participantID}>{row.experience}</td>
                             <td>{moment(row.id).format("MMMM Do YYYY, h:mm:ss a")}</td>
                             <td>
                                 <NavLink to={`/rawdata/${this.props.expID}/${row.participantID}`}
@@ -107,6 +110,9 @@ class DashboardTable extends Component {
                                 <tr>
                                     <th scope="col">Participant ID</th>
                                     <th scope="col">Weighted Rating</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Experience</th>
                                     <th scope="col">Date and Time</th>
                                     <th scope="col"></th>
                                 </tr>

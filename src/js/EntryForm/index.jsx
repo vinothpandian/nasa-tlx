@@ -64,11 +64,11 @@ class EntryForm extends Component {
                                 <h4>Please enter your details</h4>
                             </div>
                             <div className="card-body">
-                                <RadioButtonGroup id="ageGroup" title="Choose your age group" onSelect={this.onSelect} values={["20-23", "23-25", "25-27", "27-30"]}/>
+                                <RadioButtonGroup id="ageGroup" title="Choose your age group" onSelect={this.onSelect} values={["20-22", "23-25", "26-28", "29-31", "Other"]} />
                                 <hr/>
-                                <RadioButtonGroup id="genderGroup" title="Choose your gender" onSelect={this.onSelect} values={["Male", "Female", "Other"]}/>
+                                <RadioButtonGroup id="genderGroup" title="Choose your gender" onSelect={this.onSelect} values={["Male", "Female", "Other"]} />
                                 <hr/>
-                                <RadioButtonGroup id="experienceGroup" title="Choose your experience" onSelect={this.onSelect} values={["0-2 years", "2-4 years", "More than 5 years"]}/>
+                                <RadioButtonGroup id="experienceGroup" title="Choose your experience in the task" onSelect={this.onSelect} values={["0-1 year", "2-4 years", "5-7 years", "Other"]} />
                                 <div id="alertBox" className="alert mt-2" role="alert"></div>
                             </div>
                             <div className="card-footer text-right">

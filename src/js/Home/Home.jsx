@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-var shortid = require('shortid');
+const shortid = require('shortid');
 const nasaLogo = require("../../assets/NasaLogo.png");
 const axios = require("axios");
 
@@ -38,7 +38,7 @@ class Home extends Component {
 
         let id = event.target.id.split("random-");
 
-        $(`#${id[1]}`).val(shortid.generate())
+        $(`#${id[1]}`).val(shortid.generate().toUpperCase())
     }
 
 

@@ -92,8 +92,6 @@ class Pairwise extends Component {
                     this.props.history.push("/");
                     sessionStorage.clear();
                 });
-
-            console.log(data)
         }
     }
 

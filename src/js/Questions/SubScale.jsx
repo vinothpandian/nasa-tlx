@@ -33,7 +33,7 @@ class SubScale extends Component {
             axios.put(`http://localhost:3000/participant/scale/${this.expID}/${this.partID}`, data)
                 .then(()=>{
 
-                    $("#subScaleContainer").fadeOut(1000, ()=>{
+                    $("#subScaleContainer").fadeOut(500, ()=>{
                         this.props.history.push("/part2");
                     })
                 })

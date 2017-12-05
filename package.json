@@ -8,8 +8,7 @@
     "build": "NODE_ENV=production webpack --config ./config/webpack.prod.js",
     "wdev": "SET NODE_ENV=development & webpack-dev-server -d --hot --config ./config/webpack.dev.js",
     "wbuild": "SET NODE_ENV=production & webpack --config ./config/webpack.prod.js",
-    "devStart": "nodemon -e js,json server.js",
-    "start": "node server.js",
+    "start": "nodemon -e js,json server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
