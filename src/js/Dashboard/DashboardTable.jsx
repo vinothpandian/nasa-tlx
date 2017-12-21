@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {NavLink} from "react-router-dom";
-import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from "recharts";
+import {
+    Bar, BarChart, CartesianGrid, LabelList, Legend, ReferenceLine, ResponsiveContainer, Tooltip, XAxis,
+    YAxis
+} from "recharts";
 
 const axios = require("axios")
 const definitionsAPI = require("../../assets/datastore/definitions.json")
@@ -18,6 +21,8 @@ class DashboardTable extends Component {
 
         this.chartData = []
 
+        this.averageTaskload = 0;
+
     }
 
 
@@ -26,7 +31,7 @@ class DashboardTable extends Component {
         function computeTaskLoadScore(participantData) {
 
             let taskLoad = Object.keys(participantData.scale).reduce((taskload, data) => {
-                return taskload + parseFloat(participantData.scale[data] * participantData.workload[data])/15
+                return taskload + parseFloat(participantData.scale[data] * participantData.workload[data]) / 15
             }, 0);
 
             return taskLoad.toFixed(2)
@@ -40,7 +45,7 @@ class DashboardTable extends Component {
 
                     let taskLoadScore = "";
 
-                    if("scale" in row && "workload" in row) {
+                    if ("scale" in row && "workload" in row) {
                         taskLoadScore = computeTaskLoadScore(row);
                     } else {
                         taskLoadScore = <span className="text-danger font-weight-bold">Data Incomplete</span>
@@ -48,6 +53,7 @@ class DashboardTable extends Component {
 
                     tableData.push(
                         <tr key={"infoRow" + i}>
+                            <td id={"Sno-" + i}>{i + 1}</td>
                             <th id={row.participantID} scope="row">{row.participantID}</th>
                             <td id={"taskLoad-" + row.participantID}>{taskLoadScore}</td>
                             <td id={"age-" + row.participantID}>{row.age}</td>
@@ -67,6 +73,15 @@ class DashboardTable extends Component {
                     })
 
                 });
+
+                this.averageTaskload = this.chartData.reduce((acc, val) => {
+                    return acc + val.Taskload;
+                }, 0) / this.chartData.length;
+
+                tableData.push(<tr key={"infoRowFooter"} className="table-light ">
+                    <th scope="col">Average</th>
+                    <th scope="col">{this.averageTaskload.toFixed(2)}</th>
+                </tr>);
 
                 this.setState({
                     tableData: tableData
@@ -108,6 +123,7 @@ class DashboardTable extends Component {
                             <table className="table">
                                 <thead>
                                 <tr>
+                                    <th scope="col"></th>
                                     <th scope="col">Participant ID</th>
                                     <th scope="col">Weighted Rating</th>
                                     <th scope="col">Age</th>
@@ -126,17 +142,23 @@ class DashboardTable extends Component {
                     </div>
 
                     <h1 className="mt-3">Taskload chart of participants</h1>
-                    <div className="row justify-content-center align-items-center w-100 mt-5">
+                    <div className="row justify-content-center align-items-center w-100 mt-5 h-100">
 
-                        <div className="col-auto">
-                            <BarChart width={730} height={250} data={this.chartData}>
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis label={{ value: 'Participants', position: 'bottom' }} dataKey="name" />
-                                <YAxis label={{ value: 'Taskload', angle: -90, position: 'insideLeft' }} domain={[0, 100]} />
-                                <Tooltip />
-                                <Legend align="right" verticalAlign="bottom" height={36} />
-                                <Bar dataKey="Taskload" fill="#8884d8" />
-                            </BarChart>
+                        <div className="col-11">
+                            <ResponsiveContainer width={"100%"} height={400}>
+                                <BarChart data={this.chartData}>
+                                    <CartesianGrid strokeDasharray="3 3"/>
+                                    <XAxis label={{value: 'Participants', position: 'bottom'}} dataKey="name"/>
+                                    <YAxis label={{value: 'Taskload', angle: -90, position: 'insideLeft'}}
+                                           domain={[0, 100]}/>
+                                    <Tooltip/>
+                                    <Legend align="right" verticalAlign="bottom" height={36}/>
+                                    <Bar dataKey="Taskload" fill="#8884d8">
+                                    </Bar>
+                                    <ReferenceLine y={parseFloat(this.averageTaskload.toFixed(2))} stroke="red"
+                                                   strokeDasharray="3 3" label={"Average"}/>
+                                </BarChart>
+                            </ResponsiveContainer>
                         </div>
                     </div>
                 </div>

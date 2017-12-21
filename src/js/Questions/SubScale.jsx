@@ -25,10 +25,17 @@ class SubScale extends Component {
                 (map, i)=>{
                     let key = $("#slider"+i).attr("data-name");
                     let value = $("#slider"+i).slider("value");
-                    map[key] = value;
+
+                    if(key.trim().toLowerCase() === "performance") {
+                      map[key] = 100 - value;
+                    } else {
+                      map[key] = value;
+                    }
+
                     return map
                 }, {}
             );
+
 
             axios.put(`http://localhost:3000/participant/scale/${this.expID}/${this.partID}`, data)
                 .then(()=>{
